@@ -5,5 +5,12 @@
   "author": {
     "name": "육승재"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": [
+    "pstack@cursor-plugins",
+    "impeccable@impeccable",
+    "rea@rea",
+    "mattpocock-skills@claude-plugins-official",
+    "taste-skill@taste-skill"
+  ]
 }

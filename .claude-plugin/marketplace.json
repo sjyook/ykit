@@ -3,6 +3,13 @@
   "owner": {
     "name": "육승재"
   },
+  "allowCrossMarketplaceDependenciesOn": [
+    "cursor-plugins",
+    "impeccable",
+    "rea",
+    "claude-plugins-official",
+    "taste-skill"
+  ],
   "plugins": [
     {
       "name": "ykit",
