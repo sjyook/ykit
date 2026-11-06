@@ -1,0 +1,13 @@
+{
+  "name": "ykit",
+  "owner": {
+    "name": "육승재"
+  },
+  "plugins": [
+    {
+      "name": "ykit",
+      "source": "./",
+      "description": "My own skill set: skills I use often, forked from open plugins and customized."
+    }
+  ]
+}

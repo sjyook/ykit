@@ -1,0 +1,10 @@
+{
+  "skills/sharpen": {
+    "repo": "cursor/plugins",
+    "path": "pstack/skills/sharpen",
+    "ref": "main",
+    "baseSha": "88d47514b82e7c44f00f2b2a72ff6dd12158038c",
+    "syncedAt": "2026-11-06",
+    "license": "LICENSES/cursor-plugins"
+  }
+}

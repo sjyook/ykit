@@ -1,0 +1,9 @@
+{
+  "name": "ykit",
+  "version": "0.1.0",
+  "description": "My own skill set: skills I use often, forked from open plugins and customized.",
+  "author": {
+    "name": "육승재"
+  },
+  "license": "MIT"
+}
