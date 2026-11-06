@@ -10,7 +10,7 @@ Argument: optional key from `vendor.json` (for example `skills/sharpen`). With n
 
 For each entry:
 
-1. Read `repo`, `path`, `ref`, and `baseSha` from `vendor.json`. Get the latest upstream commit for the folder: `LATEST=$(gh api "repos/<repo>/commits?path=<path>&sha=<ref>&per_page=1" --jq '.[0].sha')`. If it equals `baseSha`, report "no upstream change" and go to the next entry.
+1. Read `repo`, `path`, `ref`, and `baseSha` from `vendor.json`. Decide whether the folder changed by comparing its tree SHA at `baseSha` and at `<ref>`: run `gh api "repos/<repo>/contents/<parent of path>?ref=<X>" --jq '.[] | select(.path=="<path>") | .sha'` once with `<X>` = `baseSha` and once with `<X>` = `<ref>`. If the two are equal, report "no upstream change" and go to the next entry. Do not compare commit SHAs here: a `baseSha` pinned for a whole plugin can be newer than the last commit that touched this folder. Otherwise get the latest upstream commit for the folder: `LATEST=$(gh api "repos/<repo>/commits?path=<path>&sha=<ref>&per_page=1" --jq '.[0].sha')`.
 2. Show what changed upstream. List the commits between the two points that touched the folder (`gh api "repos/<repo>/commits?path=<path>&sha=<ref>"`, stop at `baseSha`) with date and first line, then the per-file changes from `gh api "repos/<repo>/compare/<baseSha>...$LATEST"` limited to files under `<path>/`. This is how upstream changed, not how my copy differs. Ask me whether to merge.
 3. Merge file by file into a scratch directory outside the repo. For each file under `<path>/` that exists in my copy and upstream:
    - fetch the base: `gh api "repos/<repo>/contents/<path>/<file>?ref=<baseSha>" --jq .content | base64 -d > base`

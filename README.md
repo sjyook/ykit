@@ -30,6 +30,7 @@ claude plugin install ykit@ykit
 
 ## 스킬 가져오기와 원본 변경 반영
 
+- `/ykit:pick-skills <plugin>`: 설치된 플러그인의 스킬을 이름과 한 줄 설명으로 보여 주고 가져올 것을 고르게 한 뒤, 고른 스킬을 한 번에 포크합니다. 선택 가능한 스킬이 16개 이하이면 질문으로 묻고, 더 많으면 브라우저 체크리스트를 열어서 "복사"한 한 줄(`ykit-pick pstack: a, b, c`)을 채팅에 붙여 넣게 합니다. 원본 경로와 의존성 확인은 한 번만 묻습니다.
 - `/ykit:fork-skill <GitHub URL 또는 plugin:skill>`: 스킬 폴더를 원본의 특정 커밋 기준으로 복사하고 `vendor.json`에 출처를 기록합니다. 스킬이 의존하는 다른 스킬, agent, 상대 경로를 찾아 함께 가져올지 묻습니다.
 - `/ykit:sync-upstream [skills/<name>]`: 마지막으로 맞춘 커밋 이후 원본이 바뀌었는지 확인합니다. 바뀌었다면 `git merge-file`로 그 변화를 내 수정 위에 합칩니다. 충돌이 남아 있는 동안에는 `vendor.json`의 기준 커밋을 바꾸지 않습니다.
 
