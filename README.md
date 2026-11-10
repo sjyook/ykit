@@ -12,13 +12,38 @@ claude plugin marketplace add pbakaus/impeccable
 claude plugin marketplace add morluto/rea
 claude plugin marketplace add anthropics/claude-plugins-official
 claude plugin marketplace add Leonxlnx/taste-skill
-claude plugin marketplace add <GitHub 계정>/ykit
+claude plugin marketplace add sjyook/ykit
+tmp=$(mktemp) && jq '.extraKnownMarketplaces.ykit.autoUpdate = true' ~/.claude/settings.json > "$tmp" && mv "$tmp" ~/.claude/settings.json
 claude plugin install ykit@ykit
 ```
 
-앞의 다섯 줄은 ykit이 의존하는 플러그인(pstack, impeccable, rea, mattpocock-skills, taste-skill)의 마켓플레이스입니다.
+앞의 다섯 줄은 ykit이 의존하는 플러그인(pstack, impeccable, rea, mattpocock-skills, taste-skill)의 마켓플레이스입니다. 저장소는 https://github.com/sjyook/ykit 입니다.
 
-로컬 저장소에서 바로 설치하려면 첫 줄의 인자를 저장소 경로(`~/personal/ykit`)로 바꿉니다. 비공개 저장소라면 먼저 `gh auth login`이 필요합니다.
+`jq` 줄은 ykit 마켓플레이스의 자동 업데이트를 켭니다. 서드파티 마켓플레이스는 자동 업데이트가 기본으로 꺼져 있고 플러그인 쪽에서 이를 켤 방법이 없어서, 설치할 때 한 번 설정해야 합니다. 이 줄은 `marketplace add`가 settings.json에 ykit 항목을 만든 뒤에 실행해야 합니다. `/plugin` → Marketplaces → ykit → Enable auto-update로도 켤 수 있습니다. 자동 업데이트는 Claude Code를 시작할 때 확인하고, 적용에는 재시작이 필요합니다. `plugin.json`에는 `version`을 두지 않으므로 저장소에 push한 커밋이 곧 새 버전이 됩니다.
+
+비공개 저장소라면 먼저 `gh auth login`이 필요합니다.
+
+설치가 끝나면 Claude Code를 재시작해야 스킬이 로드됩니다.
+
+### 설치 확인
+
+```
+claude plugin list
+```
+
+ykit과 의존 플러그인 5개가 모두 보이고 `failed to load`가 없어야 합니다. ykit만 `failed to load`라면 의존하는 마켓플레이스를 먼저 추가하지 않은 것이므로, 위 순서대로 `marketplace add`를 한 뒤 다시 설치합니다.
+
+### 업데이트와 제거
+
+```
+claude plugin marketplace update ykit
+claude plugin update ykit@ykit
+
+claude plugin uninstall ykit@ykit
+claude plugin marketplace remove ykit
+```
+
+자동 업데이트를 켰다면 업데이트 명령은 바로 반영하고 싶을 때만 씁니다. 업데이트도 재시작해야 적용됩니다. 제거 후에도 의존 플러그인은 남으므로, 불필요하면 `claude plugin prune`으로 정리합니다.
 
 ### 의존 플러그인
 
