@@ -19,3 +19,22 @@
 claude plugin marketplace add sjyook/ykit
 claude plugin install ykit@ykit
 ```
+
+## 함께 쓰는 플러그인
+
+```bash
+claude plugin marketplace add cursor/plugins
+claude plugin install pstack@cursor-plugins
+
+claude plugin marketplace add pbakaus/impeccable
+claude plugin install impeccable@impeccable
+
+claude plugin marketplace add morluto/rea
+claude plugin install rea@rea
+
+claude plugin marketplace add anthropics/claude-plugins-official
+claude plugin install mattpocock-skills@claude-plugins-official
+
+claude plugin marketplace add Leonxlnx/taste-skill
+claude plugin install taste-skill@taste-skill
+```
