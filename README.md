@@ -30,7 +30,7 @@ claude plugin install ykit@ykit
 
 | 경로 | 내용 |
 |---|---|
-| `skills/<name>/` | 포크해서 내가 고쳐 쓰는 스킬 |
+| `skills/<name>/` | 포크해서 고쳐 쓰거나 직접 만든 스킬 |
 | `agents/<name>.md` | 스킬이 의존하는 agent |
 | `vendor.json` | 포크한 항목의 출처(저장소, 경로, 마지막으로 맞춘 원본 커밋). 스킬 폴더 밖이라 컨텍스트에 로드되지 않음 |
 | `LICENSES/` | 원본 저장소의 LICENSE |
@@ -42,3 +42,7 @@ claude plugin install ykit@ykit
 - `/ykit:sync-upstream [skills/<name>]`: 마지막으로 맞춘 커밋 이후 원본이 바뀌었는지 확인합니다. 바뀌었다면 `git merge-file`로 그 변화를 내 수정 위에 합칩니다. 충돌이 남아 있는 동안에는 `vendor.json`의 기준 커밋을 바꾸지 않습니다.
 
 두 스킬 모두 커밋과 push는 하지 않습니다.
+
+## 직접 만든 스킬
+
+- `/ykit:frame-problem <아이디어>`: 아이디어의 문제 정의만 다듬습니다. 최근에 실제로 겪은 사건과 우회 방법의 비용을 묻고, 사용자 진술을 직접 본 것/전해 들은 것/짐작으로 나눠 가장 위험한 가정을 함께 고릅니다. 해결책 설계로 넘어가지 않고, 해결책 중립성 검사와 맥락 없는 서브에이전트의 재진술 테스트를 거친 문제 진술을 `~/problems/YYYY-MM-DD-<slug>.md`에 남기고 끝냅니다.
