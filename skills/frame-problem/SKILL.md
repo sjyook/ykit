@@ -1,6 +1,6 @@
 ---
 name: frame-problem
-description: "아이디어의 문제 정의만 다듬어 해결책 중립적인 문제 진술로 확정한다. 해결책 설계로 넘어가지 않는다. /frame-problem 으로만 호출."
+description: "아이디어의 문제 정의만 다듬어 해결책 중립적인 문제 진술로 확정한다. 해결책 설계로 넘어가지 않는다. /ykit:frame-problem 으로만 호출."
 disable-model-invocation: true
 argument-hint: "<아이디어>"
 ---

@@ -46,3 +46,4 @@ claude plugin install ykit@ykit
 ## 직접 만든 스킬
 
 - `/ykit:frame-problem <아이디어>`: 아이디어의 문제 정의만 다듬습니다. 최근에 실제로 겪은 사건과 우회 방법의 비용을 묻고, 사용자 진술을 직접 본 것/전해 들은 것/짐작으로 나눠 가장 위험한 가정을 함께 고릅니다. 해결책 설계로 넘어가지 않고, 해결책 중립성 검사와 맥락 없는 서브에이전트의 재진술 테스트를 거친 문제 진술을 `~/problems/YYYY-MM-DD-<slug>.md`에 남기고 끝냅니다.
+- `/ykit:unslop <파일 경로 또는 텍스트>`: PR 설명이나 보고서 같은 글의 후처리를 한 번에 합니다. writing-clarity, humanize-korean(한국어 문서만), humanizer를 이 순서로 단계별 승인 없이 끝까지 실행하고, em/en dash가 0개인지 grep으로 확인한 뒤 원문 대비 diff를 보여 줍니다. humanize-korean이 남기는 `_workspace/`는 지웁니다. `pstack:unslop`의 dash 대체, 콜론, 추상 은유 명사, 느낌 대신 동작, 과압축 풀기 규칙을 humanizer 호출에 함께 지시합니다.
